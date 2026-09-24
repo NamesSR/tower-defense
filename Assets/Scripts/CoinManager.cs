@@ -4,18 +4,24 @@ public class CoinManager : MonoBehaviour
 {
     public static CoinManager instance;
 
-    public int coins;
+    public int goodGuyCoins;
+    public int badGuyCoins;
     public TextMeshProUGUI CoinTxt;
 
     private void Awake()
     {
         instance = this;
-        UpdateCoins(0);
+        UpdateGoodGuyCoins(0);
+        UpdateBadGuyCoins(0);
     }
 
-    public void UpdateCoins(int changeAmount)
+    public void UpdateGoodGuyCoins(int changeAmount)
     {
-        coins += changeAmount;
-        CoinTxt.text = coins.ToString();
+        goodGuyCoins += changeAmount;
+        CoinTxt.text = goodGuyCoins.ToString();
+    }
+    public void UpdateBadGuyCoins(int changeAmount)
+    {
+        badGuyCoins += changeAmount;
     }
 }

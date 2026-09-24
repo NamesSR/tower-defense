@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public static event Action Check;
     public float speed = 8f;
     public Transform target;
     void Update()
@@ -23,7 +25,10 @@ public class Projectile : MonoBehaviour
             e.health -= 1;
             if(e.health <= 0)
             {
-                CoinManager.instance.UpdateCoins(1);
+                CoinManager.instance.UpdateGoodGuyCoins(1);
+                
+                GameManager.instance.enemyWaypointIndexes.Remove(e);
+                Check?.Invoke();
                 Destroy(target.gameObject);
             }
             Destroy(gameObject);

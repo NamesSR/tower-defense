@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     public Transform firePoint;
 
     public int towerprice = 1;
+    public bool enemyInRange = false;
     private float fireCooldown = 0f;
     void Update()
     {
@@ -17,8 +18,13 @@ public class Tower : MonoBehaviour
 
         if(target != null && fireCooldown <= 0f)
         {
+            enemyInRange = true;
             Shoot(target);
             fireCooldown = 1f / fireRate;
+        }
+        else 
+        {
+            enemyInRange= false;
         }
     }
 

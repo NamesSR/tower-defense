@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using System;
 
 [System.Serializable]
 
@@ -13,6 +14,7 @@ public class WaveData
 }
 public class WaveManager : MonoBehaviour
 {
+    public static event Action waveStart;
     public WaveData[] waves;
     public Button startWaveButton;
 
@@ -26,6 +28,9 @@ public class WaveManager : MonoBehaviour
     private int currentWaveIndex = 0;
     private bool waveRunning = false;
 
+    public int addedEasyEnemy = 0;
+    public int addedHardEnemy = 0;
+
     void Start()
     {
         startWaveButton.onClick.AddListener(StartWave);
@@ -36,6 +41,7 @@ public class WaveManager : MonoBehaviour
         if (waveRunning) return;
         if (currentWaveIndex >= waves.Length) return;
 
+        waveStart?.Invoke();
         StartCoroutine(RunWave());
 
 
@@ -47,12 +53,12 @@ public class WaveManager : MonoBehaviour
         startWaveButton.interactable = false;
 
         WaveData wave = waves[currentWaveIndex];
-        for (int i = 0; i < wave.easyEnemies; i++)
+        for (int i = 0; i < wave.easyEnemies + GameManager.instance.addEasyEnemy; i++)
         {
             SpawnEnemy(easyEnemyprefab);
             yield return new WaitForSeconds((wave.duration / 3) / wave.easyEnemies);
         }
-        for (int i = 0; i < wave.hardenemies; i++)
+        for (int i = 0; i < wave.hardenemies + GameManager.instance.addHardEnemy; i++)
         {
 
             SpawnEnemy(hardEnemyprefab);
