@@ -109,4 +109,16 @@ MonoBehaviour:
   fireRate: 1.5
   projectilePrefab: {fileID: 6196913741808573148, guid: b8ec43a9241560c438b841a03201338e, type: 3}
   firePoint: {fileID: 3939728351295675161}
+  upgradeStages:
+  - range: 6
+    fireRate: 2
+    sprite: {fileID: 21300000, guid: 847b95d1d89897d43b748c2e92b48efd, type: 3}
+    price: 10
+  - range: 7.5
+    fireRate: 2.5
+    sprite: {fileID: 21300000, guid: f6165d8f043547b4f89e7568f50dd048, type: 3}
+    price: 20
+  upgradeStage: 0
+  sr: {fileID: 7756620648646808359}
   towerprice: 10
+  enemyInRange: 0

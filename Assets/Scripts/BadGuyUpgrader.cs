@@ -8,7 +8,7 @@ public class BadGuyUpgrader : MonoBehaviour
     public int easyEnemy = 0;
     public int hardEnemy = 0;
 
-
+    
     public void upgrade()
     {
         if (cost <= CoinManager.instance.badGuyCoins)

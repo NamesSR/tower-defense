@@ -11,7 +11,12 @@ public class CoinManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        UpdateGoodGuyCoins(0);
+      
+    }
+    
+    void Start()
+    {
+        UpdateGoodGuyCoins(200);
         UpdateBadGuyCoins(0);
     }
 

@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class TowerUpgradeStage
@@ -20,19 +21,18 @@ public class Tower : MonoBehaviour
 
     public TowerUpgradeStage[] upgradeStages;
     public int upgradeStage = 0;
-    SpriteRenderer sr;
 
+    public SpriteRenderer sr;
     public int towerprice = 1;
 
     public bool enemyInRange = false;
 
     private float fireCooldown = 0f;
 
-    private void Awake()
+    void Start()
     {
-        sr.GetComponent<SpriteRenderer>();
+        //sr.GetComponent<SpriteRenderer>();
     }
-
     void Update()
     {
         fireCooldown -= Time.deltaTime;

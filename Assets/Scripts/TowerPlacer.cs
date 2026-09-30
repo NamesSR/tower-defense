@@ -41,6 +41,8 @@ public class TowerPlacer : MonoBehaviour
 
         Vector3Int cellpos = placementMap.WorldToCell(mouseWorldPos);
 
+        Debug.Log($"CellPos: {cellpos}");
+
         Vector3 worldCenter = placementMap.GetCellCenterWorld(cellpos);
         worldCenter.z = 0;
         ghostInstance.transform.position = worldCenter + new Vector3(0, placementMap.cellSize.y * 0.25f);
